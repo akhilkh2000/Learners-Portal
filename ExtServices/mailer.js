@@ -1,40 +1,37 @@
 var nodemailer = require("nodemailer");
-const config=require("../config");
+const config = require("../config");
 
 async function initiateEmail(sendTo, URL) {
-  //const URL = "https://parvalue.in/setNewPassword/" + token;
-  const user = config.EMAIL_ID;
-  const pass = config.EMAIL_PASS;
-  //console.log(URL + ":" + user + ":" + pass + ":to:" + sendTo);
-  var transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: user,
-      pass: pass,
-    },
-  });
+	//const URL = "https://parvalue.in/setNewPassword/" + token;
+	const user = config.EMAIL_ID;
+	const pass = config.EMAIL_PASS;
+	//console.log(URL + ":" + user + ":" + pass + ":to:" + sendTo);
+	var transporter = nodemailer.createTransport({
+		service: "gmail",
+		auth: {
+			user: user,
+			pass: pass,
+		},
+	});
 
-  var mailOptions = {
-    from: "no-reply@learnersportalcom",
-    to: sendTo,
-    subject: "RESET PASSWORD",
-    text: `Hi User,
+	var mailOptions = {
+		from: "no-reply@learnersportalcom",
+		to: sendTo,
+		subject: "RESET PASSWORD",
+		text: `Hi User,
       Please click the link to reset your password. The link will expire in 24 hours.\n
       ${URL} \n \n 
       **********DON'T SHARE THIS LINK**********`,
-  };
+	};
 
-  const res = await transporter.sendMail(mailOptions);
-  console.log("Mail -->>\n"+res);
-  return;
+	const res = await transporter.sendMail(mailOptions);
+	console.log("Mail -->>\n" + res);
+	return;
 }
 async function sendEmail(email, URL) {
-  await initiateEmail(email, URL);
+	await initiateEmail(email, URL);
 }
 module.exports = sendEmail;
-
-
-
 
 // var nodemailer = require('nodemailer');
 

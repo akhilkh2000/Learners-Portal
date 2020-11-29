@@ -238,6 +238,7 @@ async function getTopMentors(N) {
 }
 
 async function getRecommended(favArray) {
+	//queries for all mentors matching skills found in top clicked
 	let query = {
 		$and: [
 			{ role: "mentor" },

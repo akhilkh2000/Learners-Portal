@@ -4,7 +4,7 @@ const config = {
 	RZ_KEY_SECRET: "AyP3dP0OqFrsd9fb7Gu51zDh",
 	RZ_CLIENT_ID: "rzp_test_csrqUvCcuwCD21",
 	JWT_SECRET_KEY: "uXtD3EW4DDVI02nMrEoZDky3ThMbgPjgQvY2ewWH2kvm",
-	EMAIL_ID: "",
-	EMAIL_PASS: "",
+	EMAIL_ID: "webtechsem5project@gmail.com",
+	EMAIL_PASS: "Star123$%",
 };
 module.exports = config;
