@@ -45,7 +45,7 @@ router.put("/request/:requestId",[authenticator],async (req,res)=>{
         friend.status=(req.body.status);
 
         const firstmessage={
-            text:"****Mentor waived you****",
+            text:"****Mentor started chat****",
             sender:req.user._id,
             time:new Date()
         };
