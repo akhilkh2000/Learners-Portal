@@ -10,7 +10,6 @@ const mAuthenticator = require("../Middlewares/mAuthenticator");
 const { Profile } = require("../Models/Profile");
 const { Friend } = require("../Models/Friend");
 
-//Private Mentors Profile
 router.get("/", [authenticator], async (req, res) => {
 	const userId = req.user._id;
 	let extras = {};
@@ -30,6 +29,9 @@ router.get("/", [authenticator], async (req, res) => {
 	}
 });
 
+function onlyUnique(value, index, self) {
+	return self.indexOf(value) == index;
+}
 router.put("/", [authenticator], async (req, res) => {
 	const userId = req.user._id;
 	if (userId !== req.body.userId)
@@ -40,7 +42,8 @@ router.put("/", [authenticator], async (req, res) => {
 		profile.info = data.info;
 		profile.social = data.social;
 		profile.designation = data.designation;
-		profile.skills = data.skills;
+		let skillsUnique = data.skills.filter(onlyUnique);
+		profile.skills = skillsUnique;
 		await profile.save();
 		return res.status(200).send({ res: { profile: profile } });
 	} catch (ex) {
