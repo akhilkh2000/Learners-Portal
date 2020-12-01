@@ -1,0 +1,43 @@
+<div class="login-dark">
+    <form #f="ngForm" (ngSubmit)="register(f.value)">
+        <h2 class="sr-only">Register</h2>
+        <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+        <div class="form-group">
+            <input ngModel class="form-control" type="text" name="name" placeholder="Name" required>
+        </div>
+        <div class="form-group">
+            <input ngModel class="form-control" type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input ngModel class="form-control" type="password" name="password" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <input ngModel class="form-control" type="password" name="repeatPassword" placeholder="Confirm password" required>
+        </div>
+        <p>Gender</p>
+        <div class="form-check form-check-inline">
+            <input ngModel class="form-check-input" type="radio" name="gender" id="rbtnmale" value="m" checked>
+            <label class="form-check-label" for="rbtnmale">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input ngModel class="form-check-input" type="radio" name="gender" id="rbtnfemale" value="f" checked>
+            <label class="form-check-label" for="rbtnfemale">Female</label>
+        </div>
+        <p>Who you are ??</p>
+        <div class="form-check form-check-inline">
+            <input ngModel class="form-check-input" type="radio" name="role" id="rbtnmentor" value="mentor" checked>
+            <label class="form-check-label" for="rbtnmentor">Mentor</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input ngModel class="form-check-input" type="radio" name="role" id="rbtnstudent" value="student" checked>
+            <label class="form-check-label" for="rbtnstudent">Student</label>
+        </div>
+        <div *ngIf="f.value.role=='student'"class="form-group">
+            <input ngModel class="form-control" type="text" name="regCode" placeholder="Student Registration Number (SRN)" required>
+        </div>
+        <div class="form-group">
+            <button [disabled]="!f.valid" class="btn btn-primary btn-block" type="submit">Register</button>
+        </div>
+        <a [routerLink]="['/login']" class="forgot">Already registered? Login</a>
+    </form>
+</div>

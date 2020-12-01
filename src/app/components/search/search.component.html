@@ -1,0 +1,52 @@
+	<!-- <div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6">
+			<input
+			  class="search-text"
+			  #value
+			  [(ngModel)]="searchWord"
+			  value=""
+			  placeholder="Search by skill, designation, name ..."
+			  class="js-search"
+			  type="text"
+			/>
+		  </div>
+	</div> -->
+
+	<div class="row search-bar">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 handle-input">
+		  <input
+			type="text"
+			id="handle-name"
+			placeholder="Search mentors by skill, designation, name, place ..."
+			[(ngModel)]="searchWord"
+		  />
+		</div>
+	  </div>
+
+	<div class="row">
+		<div *ngFor="let mentor of mentors | search: searchWord" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+			<div class="card-container ">
+				
+				<img class="round" style="width: 150px;"src={{mentor?.imgUrl}} alt="user" />
+				<h3><a [routerLink]="['/pubprofile', mentor.userId]">{{mentor.name}} </a></h3>
+				<h6> {{ mentor?.country }} </h6>
+				<p>{{mentor.designation}}</p>
+				<div class="rating-info"><i class="fa fa-star" aria-hidden="true"></i><span>{{mentor.avgRating}}</span></div>
+				<div class="buttons">
+					<button (click)="sendMessage(mentor)" class="primary">
+						Message
+					</button>
+					<button (click)="sendRequest(mentor)" class="primary ghost">
+						Follow
+					</button>
+				</div>
+				<div class="skills">
+					<h6>Skills</h6>
+					<ul>
+						<li *ngFor="let skill of getTopSkills(mentor.skills,5)">{{skill}}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>

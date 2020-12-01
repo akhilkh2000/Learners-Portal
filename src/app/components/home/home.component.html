@@ -1,0 +1,62 @@
+<!-- <h1 style="color: wheat;">home works!</h1>
+<a [routerLink]="['/login']">Login</a>
+<br/>
+<a [routerLink]="['/register']">Register</a>
+ -->
+
+ 
+<!-- 
+
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand"></h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" [routerLink]="['/register']">Register</a>
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">Learner's Portal</h1>
+      <p class="lead">Learn from millions of skilled professionals and grow with us.</p>
+      <p class="lead">
+        <a [routerLink]="['/register']" class="btn btn-lg btn-secondary">Get Started</a>
+      </p>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p></p>
+      </div>
+    </footer>
+  </div> -->
+
+
+
+  <!--Navigation Bar-->
+  <div class="logo">
+    <h1> LOGO </h1>
+ </div>
+ <span id="close" (click)="closeMenu()"> <img style="width: 30px;height:30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQAmrX_NcDUJA0nFrC1DLQ_uyxzljApd1e_tg&usqp=CAU" alt="CLOSE"/>  </span>
+ <span (click)="toggleNav()" id="menu"> <img style="width: 30px;height:30px;" src={{toggleImg}} alt="MENU" /> </span>
+ <nav>
+    <ul>
+       <li> <a *ngIf="loggedIn" [routerLink]="[ role=='mentor'?'/mdashboard':'/sdashboard']"> Dashboard </a> </li>
+       <li> <a *ngIf="!loggedIn" [routerLink]="['/login']"> Login </a> </li>
+       <li> <a *ngIf="loggedIn" (click)="logout()"> Logout </a> </li>
+    </ul>
+ </nav>
+ <!--Navigation Bar-->
+
+ <!--Hero Image-->
+ <header>
+    <div class="header-text">
+       <h1> <span id="photography">Learner's  Portal</span></h1>
+       <p> We provide platform to millions of students to interact with professionals and hire them as career mentor. Lets get started now.</p>
+       <button (click)="navigate('/register')"> Sign Up </button>
+    </div>
+ </header>
+ <!--Hero Image-->

@@ -1,0 +1,31 @@
+.container {
+  padding: 2rem 0rem;
+}
+
+h4 {
+  margin: 2rem 0rem 1rem;
+}
+
+.table-image td,
+.table-image th {
+  vertical-align: middle;
+}
+table {
+  color: white;
+}
+.create-payment-request {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.btn-new-payment {
+  text-align: center;
+  margin: auto;
+}
+
+.section-title {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(34, 4, 207);
+  text-transform: uppercase;
+  margin-left: 20px;
+}

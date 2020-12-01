@@ -1,0 +1,15 @@
+
+          <div class="inbox_chat">
+            <div *ngFor="let friend of friends" class="chat_list">
+              <a class="friend-list" (click)="openChat(friend)">
+              <div class="chat_people">
+                <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                <div class="chat_ib">
+                  <h5>{{friend.name | titlecase}} <span class="chat_date">{{friend.lastTime}}</span></h5>
+                  <p>{{friend.lastMsg.text}}</p>
+                </div>
+              </div>
+            </a>
+            </div>
+          </div>
+

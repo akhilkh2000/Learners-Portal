@@ -1,0 +1,39 @@
+
+
+        <div class="mesgs">
+          <div>
+            <h4 style="color:white;cursor: pointer;"><a (click)="viewProfile()">{{profileLinker?.name | titlecase}}</a></h4>
+          </div>
+          <hr/>
+          <div id="chat-div" class="msg_history">
+            <div *ngFor="let msg of messages">
+            <div  *ngIf="msg.incoming" class="incoming_msg">
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p style="color:black;">{{msg.text}}</p>
+                  <span class="time_date"> {{msg.time}}    |    {{msg.date}}</span></div>
+              </div>
+            </div>
+            <div *ngIf="!msg.incoming"class="outgoing_msg">
+              <div class="sent_msg">
+                <p>{{msg.text}}</p>
+                <span class="time_date"> {{msg.time}}    |    {{msg.date}}</span> </div>
+            </div>
+          </div>
+          <!--Dummy-->
+          <div class="outgoing_msg" style="opacity: 0;">
+            <div class="sent_msg">
+              <p></p>
+              <span class="time_date"></span> </div>
+          </div>
+          </div>
+           <!--Dummy-->
+          <div class="type_msg">
+            <form class="input_msg_write" (ngSubmit)="sendMessage()">
+              <input type="text" style="color:white;" [(ngModel)]="newMsg" name="newMsg" class="write_msg" placeholder="Type a message" />
+              <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            </form>
+          </div>
+
+        </div>
+      

@@ -1,0 +1,64 @@
+
+<div class="wrapper">
+    <div class="sidebar">
+      <div class="bg_shadow">
+      </div>
+        <div class="sidebar__inner">
+          <div (click)="closeNav()" class="close">
+            <i class="fas fa-times"></i>
+          </div>
+        <div class="profile_info">
+            <div class="profile_img">
+              <img style="border-radius: 50%;" src={{imgUrl}} alt="profile_img">
+            </div>
+            <div class="profile_data">
+                <p class="name">{{name| titlecase}}</p>  
+                <p class="role">{{role | titlecase }}</p>
+            </div>
+        </div>
+        <ul class="siderbar_menu">
+            <li><a [routerLink]="[ role=='mentor'?'/mdashboard':'/sdashboard']" routerLinkActive="active">
+              <div class="icon"><i class="fas fa-laptop"></i></div>
+              <div class="title">Home</div>
+              </a>
+            </li> 
+          <li><a [routerLink]="['/requestList']" routerLinkActive="active">
+              <div class="icon"><i class="fas fa-file-alt"></i></div>
+              <div class="title">Requests</div>
+              </a>
+            </li>  
+          <li><a [routerLink]="['/friends']" routerLinkActive="active">
+              <div class="icon"><i class="fas fa-cog"></i></div>
+              <div class="title">Connections</div>
+              </a>
+            </li>  
+          <li *ngIf="isStudent"><a [routerLink]="[ role=='mentor'?'/mprofile':'/sprofile']" routerLinkActive="active">
+              <div class="icon"><i class="fas fa-question-circle"></i></div>
+              <div class="title">Profile</div>
+              </a>
+            </li>  
+        </ul>
+      </div>
+    </div>
+    <div class="main_container">
+      <div class="top_navbar">
+          <div class="hamburger">
+              <div (click)="openNav()" class="hamburger__inner">
+                  <i class="fas fa-bars"></i>  
+              </div>  
+          </div>
+         <ul class="menu">
+            <!-- <li><a >Contact</a></li>
+            <li><a >About</a></li> -->
+         </ul>
+         <ul class="right_bar">
+          <li *ngIf="!allMentors && isStudent" ><a [routerLink]="['/allmentors']"> View All <i class="fas fa-arrow-circle-right view-all"></i> </a></li>
+            <li><i (click)="logout()" class="fas fa-sign-out-alt"></i></li> 
+         </ul>
+      </div>
+      <div>
+        <router-outlet *ngIf="true" (activate)="detectNavAndSession()"></router-outlet>
+      </div>
+      
+    </div>
+</div>

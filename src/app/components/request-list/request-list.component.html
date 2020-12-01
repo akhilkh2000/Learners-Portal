@@ -1,0 +1,72 @@
+<div class="container">
+    <div ><h3 class="section-title">Friend Requests</h3></div>
+    <div *ngIf="!hasFriendRequests" class="row"><h5 style="margin:auto;" >--- No Friend Requests ---</h5></div>
+    <div *ngIf="hasFriendRequests" class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Friend Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of friendRequests">
+              <th scope="row">{{request?.requesterName}}</th>
+              <td>{{request?.status}}</td>
+              <td>
+                <button *ngIf="role=='student' && request?.status=='cancelled'" (click)="resendRequest(request)" type="button" class="btn btn-primary">Resend</button>
+                <button *ngIf="role=='mentor' && request?.status!='cancelled' "(click)="acceptRequest(request)" type="button" class="btn btn-success">Accept</button>
+                <button *ngIf="request?.status!=='cancelled'" (click)="deleteRequest(request)" type="button" class="btn btn-danger">Cancel</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Payment Requests -->
+    <div ><h3 class="section-title">Payment Requests</h3></div>
+    <div *ngIf="!hasPaymentRequests" class="row"><h5 style="margin:auto;" >--- No pending payment requests ---</h5></div>
+    <div *ngIf="role=='mentor'"class="row">
+      <div class="create-payment-request">
+        <button (click)="createNewPaymentRequest()" class="btn btn-primary btn-new-payment">
+          + New Payment Request
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="hasPaymentRequests" class="row">
+      <div class="col-12">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th *ngIf="role=='student'" scope="col">Requested By</th>
+              <th *ngIf="role=='mentor'" scope="col">Requested To</th>
+              <th scope="col">Order-Summary</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of paymentRequests">
+              <th *ngIf="role=='student'" scope="row">{{payment?.requesterName | titlecase}}</th>
+              <td *ngIf="role=='mentor'" >{{payment?.requestedToName | titlecase}}</td>
+              <td>{{payment?.items | titlecase}}</td>
+              <td>{{payment?.amount | currency : 'INR'}}</td>
+              <td>
+                <button 
+                  *ngIf="role=='student' && payment?.status==='CREATED'" 
+                  (click)="completePayment(payment)" type="button" 
+                  class="btn btn-primary">
+                  Pay Now
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>

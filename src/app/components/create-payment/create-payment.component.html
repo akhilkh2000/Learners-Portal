@@ -1,0 +1,55 @@
+<div class="page-container">
+  <div class="modal-actions">
+    <a class="close-modal" (click)="closeModal()"><small>Close</small></a>
+  </div>
+  <div class="container main">
+    <hr />
+    <h2 style="color:white;">{{ title | titlecase }}</h2>
+    <hr />
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 handle-input">
+        <input
+          class="rounded-input"
+          type="text"
+          id="name"
+          placeholder="Payment description"
+          [(ngModel)]="newPayment.title"
+          required
+          minlength="1"
+        />
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 handle-input">
+        <input
+          class="rounded-input"
+          type="text"
+          id="link"
+          placeholder="Amount"
+          [(ngModel)]="newPayment.amount"
+          required
+          minlength="1"
+        />
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 handle-input">
+        <select [(ngModel)]="newPayment.requestedTo" required>
+          <option disabled selected>Choose Payee</option>
+          <option *ngFor="let student of students" [ngValue]="student">{{student.studentName}}</option>
+        </select>
+      </div>
+  
+  
+  
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <button
+          [disabled]="disableSubmit()"
+          (click)="createRequest()"
+          class="btn btn-default btn-submit"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
